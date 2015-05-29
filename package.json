@@ -1,0 +1,15 @@
+{
+   "name": "custom-tools",
+   "main": "./custom-tools.js",
+   "private": true,
+	"package-dependencies": {
+		"tool-bar": "^0.1.0"
+	},
+	"consumedServices": {
+		"tool-bar": {
+			"versions": {
+				"^0.1.0": "consumeToolBar"
+			}
+		}
+	}
+}
