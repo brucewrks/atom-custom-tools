@@ -47,7 +47,7 @@
 
 		/* Additional Functions */
 		this.toolBar.addButton({
-			icon: 'code',
+			icon: 'indent',
 			callback: 'atom-beautify:beautify-editor',
 			//callback: 'editor:auto-indent',
 			tooltip: 'Reformat File/Selection',
@@ -55,7 +55,7 @@
 		});
 
 		this.toolBar.addButton({
-			icon: 'align-left',
+			icon: 'file-archive-o',
 			callback: 'custom-tools:minify',
 			tooltip: 'Minify JS + CSS',
 			iconset: 'fa'
@@ -109,7 +109,7 @@
 
 		var osascripts = [
 			'tell application "iTerm" to activate',
-			//'tell application "System Events" to keystroke "t" using command down',
+			'tell application "System Events" to keystroke "n" using command down',
 			'tell application "iTerm" to tell session -1 of current terminal to write text "cd ' + realPath + '"',
 			'tell application "iTerm" to tell session -1 of current terminal to write text "clear"'
 		];
