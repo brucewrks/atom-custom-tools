@@ -2,6 +2,7 @@
 	module.exports.activate = function() {
 		atom.commands.add('atom-workspace', 'custom-tools:minify', this.minify);
 		atom.commands.add('atom-workspace', 'custom-tools:terminal', this.terminal);
+		atom.commands.add('atom-workspace', 'custom-tools:beautify', this.beautify);
 	};
 
 	module.exports.consumeToolBar = function(toolBar) {
@@ -48,8 +49,7 @@
 		/* Additional Functions */
 		this.toolBar.addButton({
 			icon: 'indent',
-			callback: 'atom-beautify:beautify-editor',
-			//callback: 'editor:auto-indent',
+			callback: 'custom-tools:beautify',
 			tooltip: 'Reformat File/Selection',
 			iconset: 'fa'
 		});
@@ -93,6 +93,15 @@
 		});
 	};
 
+	module.exports.beautify = function() {
+		var editor = atom.workspace.getActiveTextEditor(),
+			file = editor.getPath();
+
+		if (file.indexOf('php', file.length - 3) === -1)
+			atom.commands.dispatch(atom.views.getView(editor), 'atom-beautify:beautify-editor');
+		else require('child_process').exec('/usr/local/bin/php /Users/bruce/beautify/beautify.php ' + file);
+	};
+
 	module.exports.minify = function() {
 		var directories = atom.project.getDirectories();
 
@@ -104,7 +113,6 @@
 
 	module.exports.terminal = function() {
 		var directories = atom.project.getDirectories();
-
 		var realPath = directories[0].realPath || directories[0].path;
 
 		var osascripts = [
@@ -118,8 +126,6 @@
 		var doProcess = function(command) {
 			var process = require('child_process').exec('/usr/bin/osascript -e \'' + command + '\'',
 				function(err, stdout, stderr) {
-					console.log(arguments);
-
 					if (i + 1 === osascripts.length) return;
 					doProcess(osascripts[++i]);
 				}
