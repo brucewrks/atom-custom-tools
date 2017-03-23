@@ -42,14 +42,8 @@ module.exports.consumeToolBar = function(getToolBar) {
   toolBar.addSpacer();
 
   /* Additional Functions */
-  toolBar.addButton({
-    icon: 'indent',
-    callback: 'custom-tools:beautify',
-    tooltip: 'Reformat File/Selection',
-    iconset: 'fa'
-  });
 
-  toolBar.addButton({
+  /*toolBar.addButton({
     icon: 'file-archive-o',
     callback: 'custom-tools:minify',
     tooltip: 'Minify JS + CSS',
@@ -63,7 +57,7 @@ module.exports.consumeToolBar = function(getToolBar) {
     iconset: 'fa'
   });
 
-  toolBar.addSpacer();
+  toolBar.addSpacer(); */
 
   /* Additional Functions */
   toolBar.addButton({
@@ -102,7 +96,7 @@ module.exports.minify = function() {
 
   directories.forEach(function(dir) {
     var realPath = dir.realPath || dir.path;
-    var min = require('child_process').exec('/usr/local/bin/ws min ' + realPath);
+    var min = require('child_process').exec('/usr/local/lib/minify ' + realPath);
   });
 };
 
