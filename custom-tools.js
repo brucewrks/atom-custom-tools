@@ -12,7 +12,7 @@ module.exports.consumeToolBar = function(getToolBar) {
   });
 
   toolBar.addButton({
-    icon: 'floppy-o',
+    icon: 'save',
     callback: 'window:save-all',
     tooltip: 'Save All',
     iconset: 'fa'
@@ -42,26 +42,8 @@ module.exports.consumeToolBar = function(getToolBar) {
   toolBar.addSpacer();
 
   /* Additional Functions */
-
-  /*toolBar.addButton({
-    icon: 'file-archive-o',
-    callback: 'custom-tools:minify',
-    tooltip: 'Minify JS + CSS',
-    iconset: 'fa'
-  });
-
   toolBar.addButton({
-    icon: 'terminal',
-    callback: 'custom-tools:terminal',
-    tooltip: 'Open Terminal',
-    iconset: 'fa'
-  });
-
-  toolBar.addSpacer(); */
-
-  /* Additional Functions */
-  toolBar.addButton({
-    icon: 'refresh',
+    icon: 'sync',
     callback: 'window:reload',
     tooltip: 'Reload',
     iconset: 'fa'
